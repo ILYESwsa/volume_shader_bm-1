@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volume Shader GPU Performance Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-lines" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="top-nav glass">
+      <div class="brand">Volume Shader</div>
+      <nav>
+        <a href="https://github.com/ILYESwsa/" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+        <a href="https://github.com/ILYESwsa/volume_shader_bm-1" target="_blank" rel="noopener noreferrer">⭐ Star My Project</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <section class="left-col">
+        <p class="pill">⚡ Real-time GPU Benchmarking</p>
+        <h1><span>GPU Performance Test</span><br/>Volume Shader</h1>
+        <p class="lead">
+          Test your GPU with complex volume-style raymarch rendering. Includes real-time monitoring
+          of FPS, frame time, and benchmark scoring with multiple quality levels.
+        </p>
+
+        <article class="gpu-card glass">
+          <h2>GPU Information</h2>
+          <ul>
+            <li><label>Vendor</label><strong id="gpuVendor">Detecting…</strong></li>
+            <li><label>Renderer</label><strong id="gpuRenderer">Detecting…</strong></li>
+            <li><label>WebGL</label><strong id="gpuWebgl">WebGL 1.0</strong></li>
+          </ul>
+        </article>
+
+        <div class="actions">
+          <button id="startBtn" class="btn primary">▶ Start GPU Test</button>
+          <button id="benchBtn" class="btn ghost">⚡ Quick Benchmark</button>
+          <button id="fullViewBtn" class="btn ghost">⛶ Full View</button>
+        </div>
+
+        <article class="controls glass">
+          <h2>Shader Controls</h2>
+          <label>Volume Form
+            <select id="volumeForm">
+              <option value="0" selected>Classic Kernel</option>
+              <option value="1">Ripple Field</option>
+              <option value="2">Twisted Torus</option>
+              <option value="3">Lava Blob</option>
+              <option value="4">Gyroid Cloud</option>
+              <option value="5">Fractal Bubble</option>
+            </select>
+          </label>
+          <label>Quality Level
+            <select id="quality">
+              <option value="0.65">Low</option>
+              <option value="0.85">Medium</option>
+              <option value="1" selected>High</option>
+              <option value="1.25">Ultra</option>
+              <option value="1.45">Extreme</option>
+            </select>
+          </label>
+          <label>Animation Speed <input id="speed" type="range" min="0" max="3" step="0.01" value="1.1" /></label>
+          <label>Detail <input id="detail" type="range" min="24" max="120" step="1" value="80" /></label>
+          <label>Glow <input id="glow" type="range" min="0" max="2" step="0.01" value="1.15" /></label>
+          <label>Zoom Min <input id="zoomMin" type="range" min="0.6" max="3.0" step="0.1" value="1.2" /></label>
+          <label>Zoom Max <input id="zoomMax" type="range" min="3.0" max="12.0" step="0.1" value="6.0" /></label>
+        </article>
+      </section>
+
+      <section class="right-col">
+        <div class="viewer glass">
+          <button id="backBtn" class="back-btn" aria-label="Back to dashboard">← Back</button>
+          <canvas id="glCanvas" aria-label="Volume shader canvas"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <aside class="perf-widget glass">
+      <h3>⚡ Performance</h3>
+      <p>FPS: <strong id="fps">0</strong></p>
+      <p>Frame: <strong id="frameMs">0.00ms</strong></p>
+      <p>Avg FPS: <strong id="avgFps">0</strong></p>
+      <p>1% Low: <strong id="lowFps">0</strong></p>
+      <div class="bar"><i id="scoreBar"></i></div>
+      <small id="benchStatus">Idle</small>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
